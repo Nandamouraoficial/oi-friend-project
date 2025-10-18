@@ -27,6 +27,10 @@ export default {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -46,6 +50,13 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        level: {
+          none: "hsl(var(--level-none))",
+          basic: "hsl(var(--level-basic))",
+          medium: "hsl(var(--level-medium))",
+          high: "hsl(var(--level-high))",
+          excellent: "hsl(var(--level-excellent))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
