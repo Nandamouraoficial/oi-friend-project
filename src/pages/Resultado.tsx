@@ -10,7 +10,7 @@ import { getMaturityLevel } from "@/data/maturityLevels";
 import { calculatePillarScores, PillarScore } from "@/data/pillars";
 import { DiagnosticResult, Answer } from "@/types/questionnaire";
 import { supabase } from "@/integrations/supabase/client";
-import { Loader2 } from "lucide-react";
+import { Loader2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Resultado() {
