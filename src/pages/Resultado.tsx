@@ -34,6 +34,8 @@ export default function Resultado() {
 
         const score = parseInt(scoreStr);
         const answers: Answer[] = JSON.parse(answersStr);
+        const pillarData = calculatePillarScores(answers);
+        setPillarScores(pillarData);
         const levelInfo = getMaturityLevel(score);
 
         // Chamada para edge function de IA
