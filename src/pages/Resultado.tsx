@@ -6,7 +6,6 @@ import { ResultHeader } from "@/components/result/ResultHeader";
 import { DiagnosisCard } from "@/components/result/DiagnosisCard";
 import { ActionsCard } from "@/components/result/ActionsCard";
 import { CTASection } from "@/components/result/CTASection";
-import { PillarScores } from "@/components/result/PillarScores";
 import { getMaturityLevel } from "@/data/maturityLevels";
 import { calculatePillarScores, PillarScore } from "@/data/pillars";
 import { DiagnosticResult, Answer } from "@/types/questionnaire";
