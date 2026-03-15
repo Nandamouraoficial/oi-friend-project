@@ -10,7 +10,7 @@ import { getMaturityLevel } from "@/data/maturityLevels";
 import { calculatePillarScores, PillarScore } from "@/data/pillars";
 import { DiagnosticResult, Answer } from "@/types/questionnaire";
 import { supabase } from "@/integrations/supabase/client";
-import { Loader2 } from "lucide-react";
+import { Loader2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Resultado() {
@@ -144,6 +144,49 @@ export default function Resultado() {
           )}
           {result.aiDiagnosis && <DiagnosisCard diagnosis={result.aiDiagnosis} />}
           {result.actions && result.actions.length > 0 && <ActionsCard actions={result.actions} />}
+
+          {/* Oferta Contextual baseada no nível */}
+          {(() => {
+            const level = result.level;
+            let title = "";
+            let text = "";
+            let ctaLabel = "";
+            let ctaLink = "#";
+
+            if (level === "none" || level === "basic") {
+              title = "Seu negócio precisa de estrutura antes de crescer";
+              text = "Empreendedores neste estágio que tentam escalar sem fundação geralmente travam. A próxima etapa é clareza estratégica — não mais esforço.";
+              ctaLabel = "Quero uma sessão estratégica gratuita";
+              ctaLink = "#LINK_SESSAO_ESTRATEGICA";
+            } else if (level === "medium") {
+              title = "Você tem base. O que falta é aceleração";
+              text = "Negócios no seu estágio geralmente travam por falta de método, não de vontade. Uma mentoria focada move mais em 90 dias do que anos de tentativa e erro.";
+              ctaLabel = "Conhecer a mentoria Nível360";
+              ctaLink = "#LINK_MENTORIA";
+            } else {
+              title = "Você está entre os 15% mais maduros do Brasil";
+              text = "Negócios no seu nível crescem com estratégia de escala e posicionamento premium. Vamos conversar sobre o próximo movimento.";
+              ctaLabel = "Agendar conversa estratégica";
+              ctaLink = "#LINK_AGENDA";
+            }
+
+            return (
+              <div className="rounded-xl border-2 border-dourado bg-areia/30 p-8 space-y-4 shadow-lg">
+                <h2 className="text-2xl font-bold font-serif text-marrom">{title}</h2>
+                <p className="text-foreground/80 leading-relaxed">{text}</p>
+                <a
+                  href={ctaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg bg-terracota hover:bg-terracota/90 text-white font-semibold px-8 py-3 text-lg transition-colors shadow-md"
+                >
+                  {ctaLabel}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </div>
+            );
+          })()}
+
           <CTASection recommendation={result.recommendation} />
         </div>
       </main>
