@@ -101,6 +101,7 @@ export default function Resultado() {
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-8">
           <ResultHeader result={result} />
+          {pillarScores.length > 0 && <PillarScores pillarScores={pillarScores} />}
           {result.aiDiagnosis && <DiagnosisCard diagnosis={result.aiDiagnosis} />}
           {result.actions && result.actions.length > 0 && <ActionsCard actions={result.actions} />}
           <CTASection recommendation={result.recommendation} />
