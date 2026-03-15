@@ -58,6 +58,11 @@ export default {
           high: "hsl(var(--level-high))",
           excellent: "hsl(var(--level-excellent))",
         },
+        terracotta: "hsl(var(--terracotta))",
+        ocre: "hsl(var(--ocre))",
+        areia: "hsl(var(--areia))",
+        marrom: "hsl(var(--marrom))",
+        dourado: "hsl(var(--dourado))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
