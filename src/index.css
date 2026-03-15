@@ -47,6 +47,12 @@ All colors MUST be HSL.
     --level-high: 142 71% 45%;
     --level-excellent: 142 76% 36%;
 
+    --terracotta: 18 66% 47%;
+    --ocre: 40 64% 58%;
+    --areia: 33 52% 81%;
+    --marrom: 20 30% 18%;
+    --dourado: 40 87% 38%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -101,6 +107,13 @@ All colors MUST be HSL.
     --level-medium: 45 93% 47%;
     --level-high: 142 71% 45%;
     --level-excellent: 142 76% 36%;
+
+    --terracotta: 18 66% 52%;
+    --ocre: 40 64% 63%;
+    --areia: 33 30% 30%;
+    --marrom: 20 30% 80%;
+    --dourado: 40 87% 43%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;

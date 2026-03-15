@@ -6,7 +6,9 @@ import { ResultHeader } from "@/components/result/ResultHeader";
 import { DiagnosisCard } from "@/components/result/DiagnosisCard";
 import { ActionsCard } from "@/components/result/ActionsCard";
 import { CTASection } from "@/components/result/CTASection";
+import { PillarScores } from "@/components/result/PillarScores";
 import { getMaturityLevel } from "@/data/maturityLevels";
+import { calculatePillarScores, PillarScore } from "@/data/pillars";
 import { DiagnosticResult, Answer } from "@/types/questionnaire";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
@@ -15,6 +17,7 @@ import { toast } from "sonner";
 export default function Resultado() {
   const navigate = useNavigate();
   const [result, setResult] = useState<DiagnosticResult | null>(null);
+  const [pillarScores, setPillarScores] = useState<PillarScore[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -31,6 +34,8 @@ export default function Resultado() {
 
         const score = parseInt(scoreStr);
         const answers: Answer[] = JSON.parse(answersStr);
+        const pillarData = calculatePillarScores(answers);
+        setPillarScores(pillarData);
         const levelInfo = getMaturityLevel(score);
 
         // Chamada para edge function de IA
@@ -96,6 +101,7 @@ export default function Resultado() {
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-8">
           <ResultHeader result={result} />
+          {pillarScores.length > 0 && <PillarScores pillarScores={pillarScores} />}
           {result.aiDiagnosis && <DiagnosisCard diagnosis={result.aiDiagnosis} />}
           {result.actions && result.actions.length > 0 && <ActionsCard actions={result.actions} />}
           <CTASection recommendation={result.recommendation} />
