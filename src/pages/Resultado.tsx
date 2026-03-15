@@ -17,6 +17,7 @@ import { toast } from "sonner";
 export default function Resultado() {
   const navigate = useNavigate();
   const [result, setResult] = useState<DiagnosticResult | null>(null);
+  const [pillarScores, setPillarScores] = useState<PillarScore[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
