@@ -100,7 +100,48 @@ export default function Resultado() {
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-8">
           <ResultHeader result={result} />
-          {pillarScores.length > 0 && <PillarScores pillarScores={pillarScores} />}
+          {pillarScores.length > 0 && (
+            <div className="rounded-xl border border-border bg-card p-6 space-y-6">
+              <h2 className="text-2xl font-bold font-serif text-foreground">
+                Sua performance por pilar
+              </h2>
+              <div className="space-y-4">
+                {(() => {
+                  const sorted = [...pillarScores].sort((a, b) => b.percentage - a.percentage);
+                  const strongestId = sorted[0]?.id;
+                  const weakestId = sorted[sorted.length - 1]?.id;
+                  return pillarScores.map((pillar) => (
+                    <div key={pillar.id} className="space-y-1.5">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium text-foreground">{pillar.label}</span>
+                          {pillar.id === weakestId && (
+                            <span className="text-xs px-2 py-0.5 rounded bg-destructive text-destructive-foreground">
+                              Área prioritária
+                            </span>
+                          )}
+                          {pillar.id === strongestId && (
+                            <span className="text-xs px-2 py-0.5 rounded bg-emerald-600 text-white">
+                              Seu diferencial
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-sm font-semibold text-muted-foreground">
+                          {pillar.percentage}%
+                        </span>
+                      </div>
+                      <div className="h-3 w-full rounded-full bg-secondary">
+                        <div
+                          className="h-full rounded-full bg-primary transition-all"
+                          style={{ width: `${pillar.percentage}%` }}
+                        />
+                      </div>
+                    </div>
+                  ));
+                })()}
+              </div>
+            </div>
+          )}
           {result.aiDiagnosis && <DiagnosisCard diagnosis={result.aiDiagnosis} />}
           {result.actions && result.actions.length > 0 && <ActionsCard actions={result.actions} />}
           <CTASection recommendation={result.recommendation} />
